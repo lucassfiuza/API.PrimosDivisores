@@ -32,20 +32,20 @@ namespace API.PrimosDivisores.Controllers
             for (int i = numeroEntrada; i > 0; i--)
             {
                 bool primo = true;
-                for (int j = i-1; j > 1; j--)
-                {
-                    if (i % j == 0)
-                    {
-                        primo = false;
-                    }
-                }
-                if (primo && numeroEntrada % i == 0)
-                {
-                    aux2.Add(i);
-                }
                 if (numeroEntrada % i == 0)
                 {
                     aux.Add(i);
+                    for (int j = i - 1; j > 1; j--)
+                    {
+                        if (i % j == 0)
+                        {
+                            primo = false;
+                        }
+                    }
+                    if (primo)
+                    {
+                        aux2.Add(i);
+                    }
                 }
             }
             saida.Divisores = aux.OrderBy(x => x).ToArray();
